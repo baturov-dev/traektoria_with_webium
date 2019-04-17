@@ -1,12 +1,19 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 
 from pages.pages import HomePage
 
 
 @pytest.fixture
 def firefox_driver():
-    driver = webdriver.Firefox()
+    #firefox_capabilities = DesiredCapabilities.FIREFOX
+    #firefox_capabilities['marionette'] = True
+    #firefox_capabilities['binary'] = '/usr/local/bin/geckodriver'
+    driver = webdriver.Firefox(
+        executable_path='/usr/local/bin/geckodriver',
+        #capabilities=firefox_capabilities,
+    )
 
     yield driver
 
